@@ -2,6 +2,7 @@ package com.wolken.wolkenapp.service;
 
 import java.util.List;
 
+import com.wolken.wolkenapp.dto.SaveAquariumEntityDTO;
 import com.wolken.wolkenapp.entity.AquariumEntity;
 
 public interface AquariumService {
@@ -10,7 +11,7 @@ public interface AquariumService {
 
 	public AquariumEntity validateAndGetByName();
 
-	public AquariumEntity validateAndSave(AquariumEntity aquariumEntity);
+	public String validateAndSave(SaveAquariumEntityDTO saveAquariumEntityDTO );
 
 	public String validateAndDeleteByName(String aquariumName);
 

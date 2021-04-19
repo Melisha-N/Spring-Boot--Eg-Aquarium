@@ -9,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -20,24 +18,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 @Entity
-@Table(name="aquariumboot_details")    //child table
-public class AquariumEntity {
+@Table(name="details_aq")    //parent table
+public class DetailsEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="aquarium_name")
-	private String aquariumName;
-
-	@Column(name="aquarium_contact")
-	private long aquariumContact;
+	@Column(name="owner_name")
+	private String ownerName;
 	
-	@Column(name="aquarium_email")
-	private String aquariumEmail;
+	@Column(name="address")
+	private String address;
+	
 	
 	@OneToOne
-	@JsonIgnoreProperties("aquariumEntity")
-	private DetailsEntity detailsEntity;
+	@JoinColumn(name="id")
+	@JsonIgnoreProperties("detailsEntity")
+	private AquariumEntity aquariumEntity;
+
 }

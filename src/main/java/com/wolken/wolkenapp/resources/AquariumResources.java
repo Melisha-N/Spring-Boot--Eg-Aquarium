@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wolken.wolkenapp.dto.SaveAquariumEntityDTO;
 import com.wolken.wolkenapp.entity.AquariumEntity;
+import com.wolken.wolkenapp.entity.DetailsEntity;
 import com.wolken.wolkenapp.service.AquariumService;
 
 @RestController
@@ -42,13 +44,16 @@ public class AquariumResources {
 	}
 	
 	@PostMapping("/save")
-	public AquariumEntity save(@RequestBody AquariumEntity aquariumEntity) {
+	public String save(@RequestBody SaveAquariumEntityDTO saveAquariumEntityDTO) {
 		
 		System.out.println("Inside save() of AquariumResources");
 		
+		System.out.println("Calling validateAndSave() of AquariumResources");
+		aquariumService.validateAndSave(saveAquariumEntityDTO);
+		
 		System.out.println("End of save() of AquariumResources");
 		
-		return aquariumService.validateAndSave(aquariumEntity);
+		return "Data Saved Successfully";
 		
 	}
 	
