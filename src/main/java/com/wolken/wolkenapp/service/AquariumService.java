@@ -17,4 +17,12 @@ public interface AquariumService {
 
 	public AquariumEntity validateAndUpdateEmailByName(String aquariumEmail, String aquariumName);
 
+	public AquariumEntity validateAndUpdateNameByEmail(String aquariumName, String aquariumEmail);
+
+	public List<AquariumEntity> validateAndGetByContact(long aquariumContact);
+
+	public int validateAndSaveAll(List<AquariumEntity> aquariumEntity);
+
+//	public AquariumEntity validateAndUpdateContactByOwner(long aquariumContact, String owner);
+
 }
